@@ -50,13 +50,15 @@ export default function App() {
   /* ️⬇️️ ------------------ Write your code below! -----------------️️ ⬇️️ */
 
   const [characterData, setCharacterData] = React.useState({
+    hat: false,
+    shield: false,
     weapon: "sword",
-    name: getRandomItem(namesList),
-    attackOptions: getSixRandomItems(attackOptionsList),
+    name: namesList[0],
+    attackOptions: [...attackOptionsList.slice(0, 6)],
     stats: {
-      hp: getRandomStatValue(100),
-      mp: getRandomStatValue(100),
-      strength: getRandomStatValue(100),
+      hp: 90,
+      mp: 80,
+      strength: 60,
     },
   })
 
