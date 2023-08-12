@@ -49,23 +49,7 @@ export default function App() {
 
   /* ️⬇️️ ------------------ Write your code below! -----------------️️ ⬇️️ */
 
-  const getRandomItem = (items) => {
-    return items[Math.floor(Math.random() * items.length + 1)]
-  }
-
-  const getSixRandomItems = (items) => {
-    const sixRandomItems = []
-    for (let i = 0; i < 6; i++) sixRandomItems.push(getRandomItem(items))
-    return sixRandomItems
-  }
-
-  const getRandomStatValue = (maxValue) => {
-    return Math.floor(Math.random() * maxValue + 1)
-  }
-
-  const [characterData, SetCharacterData] = React.useState({
-    hat: true,
-    shield: true,
+  const [characterData, setCharacterData] = React.useState({
     weapon: "sword",
     name: getRandomItem(namesList),
     attackOptions: getSixRandomItems(attackOptionsList),
