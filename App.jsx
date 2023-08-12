@@ -8,8 +8,7 @@ import attackOptionsList from "./data/attackOptionsList"
 import namesList from "./data/namesList"
 
 export default function App() {
-    
-/* Challenge
+  /* Challenge
 
     This video game character creator needs a starting character! Your task is to build one by doing the following: 
     
@@ -48,53 +47,68 @@ export default function App() {
            screen when you run your code. You should test your code by manually changing some of the characterData property values and seeing if you get the correct results. You should also click the "Toggle" button, which will randomly change the values by using the state setting function!  
     */
 
-    /* ️⬇️️ ------------------ Write your code below! -----------------️️ ⬇️️ */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /* ------------------------------------------------------------------
+  /* ️⬇️️ ------------------ Write your code below! -----------------️️ ⬇️️ */
+
+  const getRandomItem = (items) => {
+    return items[Math.floor(Math.random() * items.length + 1)]
+  }
+
+  const getSixRandomItems = (items) => {
+    const sixRandomItems = []
+    for (let i = 0; i < 6; i++) sixRandomItems.push(getRandomItem(items))
+    return sixRandomItems
+  }
+
+  const getRandomStatValue = (maxValue) => {
+    return Math.floor(Math.random() * maxValue + 1)
+  }
+
+  const [characterData, SetCharacterData] = React.useState({
+    hat: true,
+    shield: true,
+    weapon: "sword",
+    name: getRandomItem(namesList),
+    attackOptions: getSixRandomItems(attackOptionsList),
+    stats: {
+      hp: getRandomStatValue(100),
+      mp: getRandomStatValue(100),
+      strength: getRandomStatValue(100),
+    },
+  })
+
+  /* ------------------------------------------------------------------
     
       ⚠️ ️Write your code above! The code below should not be changed! ⚠️
     
     --------------------------------------------------------------------*/
 
-    let dataToUse, functionToUse
-    
-    try {
-    	if (characterData) {
-    		dataToUse = characterData
-    	}
-    } catch {
-    	dataToUse = noCharacter.noData
+  let dataToUse, functionToUse
+
+  try {
+    if (characterData) {
+      dataToUse = characterData
     }
-    
-    try {
-    	if (setCharacterData) {
-    		functionToUse = setCharacterData
-    	}
-    } catch {
-        functionToUse = noCharacter.noFunction
-    }    
+  } catch {
+    dataToUse = noCharacter.noData
+  }
+
+  try {
+    if (setCharacterData) {
+      functionToUse = setCharacterData
+    }
+  } catch {
+    functionToUse = noCharacter.noFunction
+  }
 
   return (
     <div className="wrapper">
-    
-      <StatusBars characterData={dataToUse}  />
-      
+      <StatusBars characterData={dataToUse} />
+
       <Character characterData={dataToUse} />
-      
-      <Options characterData={dataToUse}  />
-      
-      <Button setCharacterData={functionToUse}/> 
-    
+
+      <Options characterData={dataToUse} />
+
+      <Button setCharacterData={functionToUse} />
     </div>
   )
 }
